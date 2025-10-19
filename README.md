@@ -1,2 +1,2 @@
-# VoiceRecorderForUni
-Voice recorder android app for a practice in University
+# GalleryMusicForUni
+Gallery+music playing android app for a practice in University
