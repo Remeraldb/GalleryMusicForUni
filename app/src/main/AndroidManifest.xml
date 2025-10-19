@@ -6,6 +6,7 @@
 
         <activity android:name=".SettingsActivity" android:exported="false" />
         <activity android:name=".GalleryActivity"  android:exported="false" />
+        <activity android:name=".GalleryPickerActivity" android:exported="false"/>
 
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
