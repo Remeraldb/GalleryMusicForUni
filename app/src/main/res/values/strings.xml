@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Практична 3: UI</string>
+
+    <string name="gallery">Галерея</string>
+    <string name="music_play">Музика: ▶</string>
+    <string name="music_pause">Музика: ⏸</string>
+    <string name="settings">Налаштування</string>
+
+    <string name="add_image">Додати зображення</string>
+    <string name="choose_bg">Обрати фонове зображення</string>
+    <string name="reset_bg">Скинути на стандартний</string>
+    <string name="bg_updated">Фон оновлено</string>
+</resources>
