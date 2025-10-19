@@ -1,6 +1,6 @@
 package com.example.practice3ui;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import static org.junit.Assert.*;
 
