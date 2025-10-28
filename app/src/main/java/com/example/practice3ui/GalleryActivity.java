@@ -3,7 +3,6 @@ package com.example.practice3ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -11,6 +10,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -18,6 +18,7 @@ import com.example.practice3ui.databinding.ActivityGalleryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -68,8 +69,8 @@ public class GalleryActivity extends AppCompatActivity {
                 new ImageAdapter.OnSelectionChangeListener() {
                     @Override
                     public void onSelectionModeChanged(boolean enabled) {
-                        binding.deleteBar.setVisibility(enabled ? View.VISIBLE : View.GONE);
-                        binding.fabAdd.setVisibility(enabled ? View.GONE : View.VISIBLE);
+                        binding.deleteBar.setVisibility(enabled ? android.view.View.VISIBLE : android.view.View.GONE);
+                        binding.fabAdd.setVisibility(enabled ? android.view.View.GONE : android.view.View.VISIBLE);
                     }
 
                     @Override
@@ -84,13 +85,29 @@ public class GalleryActivity extends AppCompatActivity {
 
         binding.fabAdd.setOnClickListener(v -> launchPicker());
 
+        // ← UPDATED: show confirmation dialog before deleting
         binding.btnDelete.setOnClickListener(v -> {
-            if (adapter.getSelectedPositions().isEmpty()) {
+            Set<Integer> sel = adapter.getSelectedPositions();
+            if (sel == null || sel.isEmpty()) {
                 Toast.makeText(this, "Nothing selected", Toast.LENGTH_SHORT).show();
                 return;
             }
-            adapter.deleteSelected();
-            UriStorage.saveGalleryUris(this, images);
+
+            // Build readable message (1 item vs N items)
+            String msg = sel.size() == 1 ? "Видалити 1 зображення?" : "Видалити " + sel.size() + " зображення(ь)?";
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Підтвердження видалення")
+                    .setMessage(msg)
+                    .setPositiveButton("Видалити", (dialog, which) -> {
+                        // perform delete
+                        adapter.deleteSelected();
+                        // persist the updated gallery
+                        UriStorage.saveGalleryUris(this, images);
+                        Toast.makeText(this, "Видалено", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Скасувати", null)
+                    .show();
         });
     }
 
