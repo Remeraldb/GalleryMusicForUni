@@ -19,6 +19,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
@@ -28,4 +29,7 @@ dependencies {
     implementation libs.ext.junit
     testImplementation libs.junit.jupiter
     testImplementation libs.testng
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0' // опційно для pinch-to-zoom
+
 }

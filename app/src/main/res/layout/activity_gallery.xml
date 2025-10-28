@@ -19,4 +19,27 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         app:srcCompat="@android:drawable/ic_input_add"/>
+    <LinearLayout
+        android:id="@+id/deleteBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="?attr/colorPrimaryContainer"
+        android:visibility="gone"
+        android:padding="8dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Видалити вибране"
+            android:textColor="@android:color/white"
+            android:backgroundTint="?attr/colorPrimary" />
+    </LinearLayout>
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

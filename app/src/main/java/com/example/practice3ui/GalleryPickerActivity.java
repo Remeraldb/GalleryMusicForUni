@@ -26,7 +26,7 @@ public class GalleryPickerActivity extends AppCompatActivity {
         images.addAll(UriStorage.getGalleryUris(this));
         binding.recycler.setLayoutManager(new GridLayoutManager(this, 3));
 
-        adapter = new ImageAdapter(this, images);
+        adapter = new ImageAdapter(this, images, null, null);
         binding.recycler.setAdapter(adapter);
 
         // Hide "add image" button — not needed in picker mode
